@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %} Idea {% endblock %}
+{% block content %}
+
+
+<div class="card">
+    <h5 class="card-header"> {{ idea.title }} </h5>
+    <div class="card-body">
+      <h5 class="card-title"> Author: {{ idea.author}} </h5>
+      <p class="card-text"> {{ idea.description }} </p>
+    </div>
+</div>
+
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+<a href="{% url 'delete_idea' idea.id %}" class="btn btn-danger">Delete</a>
+
+<a href="{% url 'update_idea' idea.id %}" class="btn btn-secondary">Update Idea</a>
+
+
+{% endblock %}

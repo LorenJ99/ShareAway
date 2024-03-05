@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %} ShareAway {% endblock %}
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+
+{% if user.is_authenticated %}
+
+<h1> Ideas </h1>
+{% if ideas %}
+  {% for idea in ideas %}
+    <a href="{% url 'idea' idea.id %}">{{ idea.title }}</a>, Autor: {{ idea.author }}<br/>
+  {% endfor %}
+
+{% endif %}
+
+{% else %}
+
+<h1>Login</h1>
+<br> 
+
+<form method="POST" action="{% url 'home' %}">
+    {% csrf_token %}
+    <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" name="username", placeholder="Username" required>
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" name="password", placeholder="Password" required>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
