@@ -34,7 +34,7 @@ class SignUpForm(UserCreationForm):
 
 class AddIdeaForm(forms.ModelForm):
 	title = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Title", "class":"form-control"}), label="")
-	description = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Description", "class":"form-control"}), label="")
+	description = forms.CharField(required=True, widget=forms.widgets.Textarea(attrs={"placeholder":"Description", "class":"form-control", "rows": 5}), label="")
 
 	class Meta:
 		model = Idea
